@@ -1,0 +1,56 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "World Air Quality Index API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.waqi.info"
+    }
+  ],
+  "paths": {
+    "/feed/{city}/": {
+      "get": {
+        "operationId": "get_aqi_by_city",
+        "summary": "Get current AQI by city",
+        "description": "Returns current air quality index data for a city.",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "City name, for example jackson or atlanta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current AQI response"
+          }
+        },
+        "security": [
+          {
+            "waqiToken": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "waqiToken": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {
+      "waqiToken": []
+    }
+  ]
+}

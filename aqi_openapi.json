@@ -1,0 +1,42 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "AQI API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.waqi.info"
+    }
+  ],
+  "paths": {
+    "/feed/{city}/": {
+      "get": {
+        "operationId": "get_aqi",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "AQI data"
+          }
+        }
+      }
+    }
+  }
+}
